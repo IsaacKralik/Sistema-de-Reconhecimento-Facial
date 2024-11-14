@@ -1,0 +1,28 @@
+-- criação da tabela de usuarios
+CREATE TABLE user (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT
+                         NOT NULL
+                         UNIQUE,
+    nome         TEXT    NOT NULL,
+    sobrenome    TEXT    NOT NULL,
+    data_nasc    TEXT    NOT NULL,
+    genero       TEXT    NOT NULL,
+    nivel_acesso INTEGER NOT NULL,
+    cpf          INTEGER NOT NULL
+                         UNIQUE,
+    email        TEXT    NOT NULL,
+    senha        TEXT    NOT NULL
+);
+
+
+--criação da tabela de fotos
+CREATE TABLE photos (
+    id_user INTEGER REFERENCES user (id) ON DELETE CASCADE
+                                         ON UPDATE CASCADE
+                    NOT NULL,
+    photo   BLOB    UNIQUE
+                    NOT NULL,
+    id      INTEGER PRIMARY KEY AUTOINCREMENT
+                    NOT NULL
+                    UNIQUE
+);
